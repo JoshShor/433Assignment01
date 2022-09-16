@@ -11,7 +11,7 @@ using namespace std;
  * @brief Constructor for the ReadyQueue class.
  */
  ReadyQueue::ReadyQueue()  {
-     //TODO: add your code here
+     pcbarry = new pcb[50];
  }
 
 /**
@@ -40,7 +40,7 @@ PCB* ReadyQueue::removePCB() {
  * @return int: the number of PCBs in the queue
  */
 int ReadyQueue::size() {
-    //TODO: add your code here
+    return size;
 }
 
 /**
