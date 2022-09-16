@@ -18,7 +18,9 @@
  */
 class ReadyQueue {
 private:
-    pcb* pcbarry;
+    pcb* pcbPtr //poiter
+    int pcb_arry; //the array
+    int ary_size; //size of array
     int capacity;
 
 
@@ -43,7 +45,7 @@ public:
      *
      * @param pcbPtr: the pointer to the PCB to be added
      */
-	void addPCB(PCB* pcbPtr);
+	void addPCB(PCB* pcbPtr); //insert
 
     /**
      * @brief Remove and return the PCB with the highest priority from the queue
