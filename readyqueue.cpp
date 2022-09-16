@@ -12,6 +12,8 @@ using namespace std;
  */
  ReadyQueue::ReadyQueue()  {
      pcb_arry = new pcb[50];
+
+     // use heapify and max heap here or write another function --JTS
  }
 
 /**
@@ -40,6 +42,7 @@ PCB* ReadyQueue::removePCB() {
  * @return int: the number of PCBs in the queue
  */
 int ReadyQueue::size() {
+    //TODO: add your code here
     return sizeof(pcb_arry);
 }
 
@@ -47,7 +50,7 @@ int ReadyQueue::size() {
  * @brief Display the PCBs in the queue.
  */
 void ReadyQueue::displayAll() {
-    //TODO: add your code here
+
     for (int i = 0, i < pcb_arry.size(); i++) {
         cout << pcb_arry[i] << " ";
     }

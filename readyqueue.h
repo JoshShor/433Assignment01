@@ -18,9 +18,9 @@
  */
 class ReadyQueue {
 private:
-    pcb* pcbPtr //poiter
-    int pcb_arry; //the array
+    pcb* pcbPtr; //poiter to pcb
     int ary_size; //size of array
+    int pcb_arry[ary_size]; //the array
     int capacity;
 
 
