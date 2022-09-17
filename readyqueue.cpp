@@ -23,6 +23,14 @@ using namespace std;
  */
 void ReadyQueue::addPCB(PCB *pcbPtr) {
     //TODO: add your code here
+    pcb_arry[size] = *pcbPtr;
+    int size = pcb_arry.size();
+    int i = size - 1;
+    for(int j = 0; j < size; j++){
+        heapify(pcb_arry, size, i);
+    }
+    state = READY;
+    return *pcbPtr;
     // When adding a PCB to the queue, you must change its state to READY.
 }
 
@@ -50,6 +58,8 @@ void heapify(pcb* pcb_arry[], int size, int i){
  */
 PCB* ReadyQueue::removePCB() {
     //TODO: add your code here
+
+    state = RUNNING;
     // When removing a PCB from the queue, you must change its state to RUNNING.
 }
 
