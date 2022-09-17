@@ -15,7 +15,7 @@ using namespace std;
     ary_size; //size of array
     pcb_arry[ary_size]; //the array
     capacity;
-    pcb_arry = new pcb[50];
+    pcb_arry = new PCB[50];
  }
 
 /**
@@ -36,19 +36,19 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
     // When adding a PCB to the queue, you must change its state to READY.
 }
 
-void heapify(pcb* pcb_arry[], int size, int i){
+void heapify(PCB pcb_arry[], int size, int i){
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
     if((left < size && pcb_arry[left]) > pcb_arry[largest]){
         largest = left;
     }
-    if(right < size && pcb_arry[right] > pcb_arry[largest]){
+    if((right < size && pcb_arry[right]) > pcb_arry[largest]){
         largest = right;
     }
     if(largest != i){
         swap(pcb_arry[i], pcb_arry[largest]);
-        heapify(pcb* pcb_arry[], int size, largest);
+        heapify(PCB* pcb_arry[], int size, largest);
     }
 }
 

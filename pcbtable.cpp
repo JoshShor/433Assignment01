@@ -15,7 +15,7 @@
  * @param size: the capacity of the PCBTable
  */
 PCBTable::PCBTable(int size) {
-    id = id;
+    id = pid;
     priority = priority;
     state = state;
     vector<PCB> pcb_table_elem;
