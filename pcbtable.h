@@ -21,7 +21,7 @@ private:
     int id;
     int priority;
     ProcState state;
-    vector<int> pcb_table_elem;
+    vector<PCB> pcb_table_elem;
     
     // TODO: add your private member variables here
     // choose a data structure for the PCBTable. You can use an array of PCB pointers, e.g. vector<PCB *>. 

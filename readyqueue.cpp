@@ -12,9 +12,6 @@ using namespace std;
  */
  ReadyQueue::ReadyQueue()  {
     pcbPtr; //poiter to pcb
-    ary_size; //size of array
-    pcb_arry[ary_size]; //the array
-    capacity;
     pcb_arry = new PCB[50];
  }
 
@@ -24,7 +21,7 @@ using namespace std;
  * @param pcbPtr: the pointer to the PCB to be added
  */
 void ReadyQueue::addPCB(PCB *pcbPtr) {
-    //TODO: add your code here
+
     pcb_arry[size] = *pcbPtr;
     int size = pcb_arry.size();
     int i = size - 1;
@@ -32,7 +29,6 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
         heapify(pcb_arry, size, i);
     }
     state = READY;
-    return *pcbPtr;
     // When adding a PCB to the queue, you must change its state to READY.
 }
 
@@ -48,7 +44,7 @@ void heapify(PCB pcb_arry[], int size, int i){
     }
     if(largest != i){
         swap(pcb_arry[i], pcb_arry[largest]);
-        heapify(PCB* pcb_arry[], int size, largest);
+        heapify(PCB* pcb_arry[], size, largest);
     }
 }
 
@@ -58,11 +54,11 @@ void heapify(PCB pcb_arry[], int size, int i){
  * @return PCB*: the pointer to the PCB with the highest priority
  */
 PCB* ReadyQueue::removePCB() {
-    //TODO: add your code here
+
     pcb_arry[0] = 0; //resetting value at the top of the array
-    int s = pcb_arry[].size;
+    int s = pcb_arry[].size();
     int i = s - 1;
-    heapify(pcb_arry[], int s, int i); //re-organize array to set the prioirty
+    heapify(pcb_arry[], s, i); //re-organize array for the priority
     state = RUNNING;
     // When removing a PCB from the queue, you must change its state to RUNNING.
 }
