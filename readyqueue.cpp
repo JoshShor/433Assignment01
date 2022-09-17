@@ -11,9 +11,11 @@ using namespace std;
  * @brief Constructor for the ReadyQueue class.
  */
  ReadyQueue::ReadyQueue()  {
-     pcb_arry = new pcb[50];
-
-     // use heapify and max heap here or write another function --JTS
+    pcbPtr; //poiter to pcb
+    ary_size; //size of array
+    pcb_arry[ary_size]; //the array
+    capacity;
+    pcb_arry = new pcb[50];
  }
 
 /**
@@ -58,7 +60,10 @@ void heapify(pcb* pcb_arry[], int size, int i){
  */
 PCB* ReadyQueue::removePCB() {
     //TODO: add your code here
-
+    pcb_arry[0] = 0; //resetting value at the top of the array
+    int s = pcb_arry[].size;
+    int i = s - 1;
+    heapify(pcb_arry[], int s, int i); //re-organize array to set the prioirty
     state = RUNNING;
     // When removing a PCB from the queue, you must change its state to RUNNING.
 }
@@ -69,7 +74,6 @@ PCB* ReadyQueue::removePCB() {
  * @return int: the number of PCBs in the queue
  */
 int ReadyQueue::size() {
-    //TODO: add your code here
     return sizeof(pcb_arry);
 }
 
