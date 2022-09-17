@@ -26,6 +26,23 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
     // When adding a PCB to the queue, you must change its state to READY.
 }
 
+void heapify(pcb* pcb_arry[], int size, int i){
+    int size = pcb_arry.size();
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+    if(left < pcb_arry.size() && pcb_arry[left] > pcb_arry[largest]){
+        largest = left;
+    }
+    if(right < pcb_arry.size() && pcb_arry[right] > pcb_arry[largest]){
+        largest = right;
+    }
+    if(largest != i){
+        swap(pcb_arry[i], pcb_arry[largest]);
+        heapify(pcb* pcb_arry[], int size, largest);
+    }
+}
+
 /**
  * @brief Remove and return the PCB with the highest priority from the queue
  *
