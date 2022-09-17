@@ -37,14 +37,13 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
 }
 
 void heapify(pcb* pcb_arry[], int size, int i){
-    int size = pcb_arry.size();
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
-    if(left < pcb_arry.size() && pcb_arry[left] > pcb_arry[largest]){
+    if((left < size && pcb_arry[left]) > pcb_arry[largest]){
         largest = left;
     }
-    if(right < pcb_arry.size() && pcb_arry[right] > pcb_arry[largest]){
+    if(right < size && pcb_arry[right] > pcb_arry[largest]){
         largest = right;
     }
     if(largest != i){

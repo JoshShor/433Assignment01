@@ -15,8 +15,10 @@
  * @param size: the capacity of the PCBTable
  */
 PCBTable::PCBTable(int size) {
-
-   vector<PCB> pcb_table_elem;
+    id = id;
+    priority = priority;
+    state = state;
+    vector<PCB> pcb_table_elem;
 }
 
 /**
@@ -40,7 +42,7 @@ PCBTable::~PCBTable() {
  * @return PCB*: pointer to the PCB at index "idx"
  */
 PCB* PCBTable::getPCB(unsigned int idx) {
-    // TODO: add your code here
+    return pcb_table_elem(idx);
 }
 
 /**
@@ -49,5 +51,5 @@ PCB* PCBTable::getPCB(unsigned int idx) {
  * @param pcb: the PCB to add
  */
 void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
-    // TODO: add your code here
+    pcb_table_elem.insert(idx, *pcb);
 }
