@@ -6,19 +6,24 @@
  * //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
  * // Remember to add sufficient comments to your code
  */
-
+#include<iostream>
 #include "pcbtable.h"
 #include <vector>
+using namespace std;
+
+
 /**
  * @brief Construct a new PCBTable object of the given size (number of PCBs)
  *
  * @param size: the capacity of the PCBTable
  */
 PCBTable::PCBTable(int size) {
-    id = pid;
+    //id = pid;
     priority = priority;
     state = state;
-    vector<PCB> pcb_table_elem;
+    vector<PCB> pcb_table_elem(size);
+    std::cout << "initiatize vector with size ="<< pcb_table_elem.size() << std::endl;
+   
 }
 
 /**
@@ -26,13 +31,7 @@ PCBTable::PCBTable(int size) {
  *
  */
 PCBTable::~PCBTable() {
-    
-    delete pcb_table_elem;
-    /*
-   for(int i = 1; i<size; i++){
-        delete pcb_table_elem(i);
-   }
-   */
+     //delete pcb_table_elem;
 }
 
 /**
@@ -42,7 +41,7 @@ PCBTable::~PCBTable() {
  * @return PCB*: pointer to the PCB at index "idx"
  */
 PCB* PCBTable::getPCB(unsigned int idx) {
-    return pcb_table_elem(idx);
+      return  &pcb_table_elem.at(idx);
 }
 
 /**
@@ -51,5 +50,10 @@ PCB* PCBTable::getPCB(unsigned int idx) {
  * @param pcb: the PCB to add
  */
 void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
-    pcb_table_elem.insert(idx, *pcb);
+
+    std::cout << "addPCB = " << idx << std::endl;
+    std::cout << "addPCB = " << pcb << std::endl;
+    pcb_table_elem.insert(pcb_table_elem.begin() + idx, *pcb);
+    std::cout << "addPCB complete"<<  std::endl;
+  
 }
