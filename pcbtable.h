@@ -1,7 +1,7 @@
 /**
  * Assignment 1: priority queue of processes
  * @file pcbtable.h
- * @author Joshua Shor, Tam Nguyen
+ * @author ??? (TODO: your name)
  * @brief This is the header file for the PCBTable class, an array(list) of all PCB elements in the system..
  * @version 0.1
  */
@@ -18,15 +18,12 @@
  */
 class PCBTable {
 private:
+    // TODO: add your private member variables here
+    // choose a data structure for the PCBTable. You can use an array of PCB pointers, e.g. vector<PCB *>. 
     int id;
     int priority;
     ProcState state;
     vector<PCB> pcb_table_elem;
-    
-    // TODO: add your private member variables here
-    // choose a data structure for the PCBTable. You can use an array of PCB pointers, e.g. vector<PCB *>. 
-    
-
 public:
     /**
      * @brief Construct a new PCBTable object of the given size (number of PCBs)
@@ -74,7 +71,8 @@ public:
      * @param idx The index of the new PCB in the PCBTable
      */
     void addNewPCB(unsigned int pid, unsigned int priority, unsigned int idx) {
+        std::cout << "addNewPCB = " << pid << priority << idx << std::endl;
         PCB *pcb = new PCB(pid, priority);
-        addPCB(PCB, idx);
+        addPCB(pcb, idx);
     }
 };
