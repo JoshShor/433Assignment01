@@ -1,7 +1,7 @@
 /**
  * Assignment 1: priority queue of processes
  * @file pcbtable.h
- * @author Joshua Shor, Tam Nguyen
+ * @author Tam Nguyen, Josh Shor
  * @brief This is the header file for the PCBTable class, an array(list) of all PCB elements in the system..
  * @version 0.1
  */
@@ -23,7 +23,7 @@ private:
     int id;
     int priority;
     ProcState state;
-    vector<PCB> pcb_table_elem;
+    vector<PCB*> pcb_table_elem;
 public:
     /**
      * @brief Construct a new PCBTable object of the given size (number of PCBs)
