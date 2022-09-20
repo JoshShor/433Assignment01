@@ -3,9 +3,12 @@
 #include <string>
 using namespace std;
 
-
-//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
-// Remember to add sufficient comments to your code
+/**
+ * Assignment 1: priority queue of processes
+ * @file readyqueue.cpp
+ * @author Tam Nguyen, Josh Shor
+ * @brief This is the implementation file for the PCBTable class.
+ */
 
 
 /**
@@ -18,41 +21,76 @@ using namespace std;
     arr = new PCB[capacity];
     std::cout << "initiatize ReadyQueue with size =" << arr << std::endl;
    
-     //TODO: add your code here
  }
-
+/**
+ * @brief swap 
+ * 
+ * @param arr 
+ * @param q 
+ * @param i 
+ */
 void ReadyQueue::swap(PCB arr[], int q, int i)
 {
     PCB temp = arr[q];
     arr[q] = arr[i];
     arr[i] = temp;
 }
-// Returns the index of the parent for i.
+/**
+ * @brief return parent
+ * 
+ * @param i 
+ * @return int 
+ */
 int ReadyQueue::parent(int i)
 {
     return (i-1)/2;
 }
-// Returns the index of i's left node.
+/**
+ * @brief return left
+ * 
+ * @param i 
+ * @return int 
+ */
 int ReadyQueue::left(int i)
 {
     return 2*i + 1;
 }
-// Returns the index of i's right node.
+/**
+ * @brief return right
+ * 
+ * @param i 
+ * @return int 
+ */
 int ReadyQueue::right(int i)
 {
     return 2*i + 2;
 }
 
-// Returns whether the node at i is a leaf node or not.
+/**
+ * @brief return isLeaf
+ * 
+ * @param i 
+ * @return true 
+ * @return false 
+ */
 bool ReadyQueue::isLeaf(int i)
 {
     return (i >= arr_size/2);
 }
-// Returns the max value of the heap.
+/**
+ * @brief return getMax
+ * 
+ * @return PCB 
+ */
 PCB ReadyQueue::getMax()
 {
     return arr[0];
 }
+/**
+ * @brief sends upwards 
+ * 
+ * @param i 
+ */
  void  ReadyQueue::siftUp(int i)
 {
     while(i > 0 && arr[parent(i)].priority < arr[i].priority)
@@ -61,8 +99,12 @@ PCB ReadyQueue::getMax()
         i = parent(i);
     }
 }
-// Sifts the node at i down until it is a leaf or larger than both the left
-// and right nodes.
+/**
+ * @brief sifts downwards
+ * 
+ * @param i 
+ * @return * Sifts 
+ */
 void  ReadyQueue::siftDown(int i)
 {
     while(!isLeaf(i))
