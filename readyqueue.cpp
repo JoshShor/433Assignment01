@@ -1,7 +1,8 @@
 #include <iostream>
 #include "readyqueue.h"
-
+#include <string>
 using namespace std;
+
 
 //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
 // Remember to add sufficient comments to your code
@@ -11,54 +12,90 @@ using namespace std;
  * @brief Constructor for the ReadyQueue class.
  */
  ReadyQueue::ReadyQueue()  {
-     //TODO: add your code here ##done
-     q_size = 0; //initalizing size of q to 0
-     for (int i = 0; i < 50; i++){
-        rdy_queue[i] = NULL;
-     }
+    int n = 100;
+    capacity = n;
+    arr_size = 0;
+    arr = new PCB[capacity];
+    std::cout << "initiatize ReadyQueue with size =" << arr << std::endl;
+   
+     //TODO: add your code here
  }
 
- void ReadyQueue::max_heapify(int s; int i){
-
-    int largest = int id;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-
-    //left node
-    if (left < s && rdy_queue[left] > rdy_queue[largest]){
-        largest = left;
-    }
-    if(right < s && rdy_queue[right > rdy_queue[largest]]){
-        largest = right;
-    }
-    if(largest != i){
-        swap(i, largest)
-        max_heapify(s, largest)
-    }
- }
-
-void ReadyQueue::swap(int p1, int p2){
-
-    //PCB* temp = NULL;
-    temp = rdy_queue[p1];
-    rdy_queue[p1] = rdy_queue[p2];
-    rdy_queue[p2] = temp;
+void ReadyQueue::swap(PCB arr[], int q, int i)
+{
+    PCB temp = arr[q];
+    arr[q] = arr[i];
+    arr[i] = temp;
 }
+// Returns the index of the parent for i.
+int ReadyQueue::parent(int i)
+{
+    return (i-1)/2;
+}
+// Returns the index of i's left node.
+int ReadyQueue::left(int i)
+{
+    return 2*i + 1;
+}
+// Returns the index of i's right node.
+int ReadyQueue::right(int i)
+{
+    return 2*i + 2;
+}
+
+// Returns whether the node at i is a leaf node or not.
+bool ReadyQueue::isLeaf(int i)
+{
+    return (i >= arr_size/2);
+}
+// Returns the max value of the heap.
+PCB ReadyQueue::getMax()
+{
+    return arr[0];
+}
+ void  ReadyQueue::siftUp(int i)
+{
+    while(i > 0 && arr[parent(i)].priority < arr[i].priority)
+    {
+        swap(arr, i, parent(i));
+        i = parent(i);
+    }
+}
+// Sifts the node at i down until it is a leaf or larger than both the left
+// and right nodes.
+void  ReadyQueue::siftDown(int i)
+{
+    while(!isLeaf(i))
+    {
+        int l = left(i);
+        int r = right(i);
+        int larger = l;
+        if(r < arr_size)
+            larger = (arr[l].priority > arr[r].priority) ? l : r;
+        if(arr[i].priority >= arr[larger].priority)
+            break;
+        swap(arr, i, larger);
+        i = larger;
+    }
+}
+
+
 /**
  * @brief Add a PCB representing a process into the ready queue.
  *
  * @param pcbPtr: the pointer to the PCB to be added
  */
 void ReadyQueue::addPCB(PCB *pcbPtr) {
+    //TODO: add your code here
+      if(arr_size >= capacity){
+    //             throw Overflow();
+      }
+
+             int i = arr_size;
+             arr[i] = *pcbPtr;
+             siftUp(i);
+             arr_size++;
     // When adding a PCB to the queue, you must change its state to READY.
-    pcbPtr->setState(ProcState::READY);
-    q_size = q_size + 1; //increment size of the heap
-
-    rdy_queue[q_size-1] =  pcbPtr;
-
-    //write heapify.....
-
-
 }
 
 /**
@@ -69,10 +106,17 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
 PCB* ReadyQueue::removePCB() {
     //TODO: add your code here
     // When removing a PCB from the queue, you must change its state to RUNNING.
+      if(arr_size >= 0) {
+            if(arr_size == 1) {
+                 PCB res = arr[--arr_size];
+                return &res;
+            }
+            PCB res = arr[0];
+            arr[0] = arr[--arr_size];
+            siftDown(0);
 
-    
-
-
+            return &res;
+    }
 }
 
 /**
@@ -81,18 +125,19 @@ PCB* ReadyQueue::removePCB() {
  * @return int: the number of PCBs in the queue
  */
 int ReadyQueue::size() {
-
-    return q_size;
+    return arr_size;
 }
 
 /**
  * @brief Display the PCBs in the queue.
  */
 void ReadyQueue::displayAll() {
-    //TODO: add your code here
-    for (int i = 0; i < 50; i++){
-        if(rdy_queue[i] = NULL){
-            cout << i, queue[i] -> priority;
-        }
+    for(int i = 0; i < arr_size; i++){
+         int tmpId = arr[i].id;
+         int tmpPriority = arr[i].priority;
+        std::cout << "id =" << tmpId << " priority =" << tmpPriority << std::endl;
+          
     }
 }
+
+
