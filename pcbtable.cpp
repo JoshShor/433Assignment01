@@ -1,7 +1,7 @@
 
 /**
  * Assignment 1: priority queue of processes
- * @file pcbtable.h
+ * @file pcbtable.cpp
  * @author Tam Nguyen, Josh Shor
  * @brief This is the implementation file for the PCBTable class.
  * //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
@@ -56,9 +56,7 @@ void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
     //std::cout << "addPCB = " << pcb << std::endl;
     //this is giving a segmentation fault error?
     auto it = pcb_table_elem.begin() + idx;
-
-    pcb_table_elem.insert(it, pcb);
-    
+    pcb_table_elem.insert(it, pcb);  
     //std::cout << "addPCB complete"<<  std::endl;
   
 }
