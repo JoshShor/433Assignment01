@@ -20,6 +20,7 @@ using namespace std;
  */
 PCBTable::PCBTable(int size) {
     //id = pid;
+
     priority = priority;
     state = state;
     pcb_table_elem = vector<PCB*>(size);
@@ -37,7 +38,6 @@ PCBTable::~PCBTable() {
 
 /**
  * @brief Get the PCB at index "idx" of the PCBTable.
- *
  * @param idx: the index of the PCB to get
  * @return PCB*: pointer to the PCB at index "idx"
  */
