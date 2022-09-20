@@ -1,26 +1,25 @@
 /**
  * Assignment 1: priority queue of processes
  * @file readyqueue.h
- * @author Joshua Shor, Tim Nguyen
+ * @author Tam Nguyen, Josh Shor
  * @brief ReadyQueue is a queue of PCB's that are in the READY state to be scheduled to run.
  * It should be a priority queue such that the process with the highest priority can be selected next.
  * @version 0.1
  */
-//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
-// Remember to add sufficient comments to your code
-#pragma once
 
+#pragma once
 #include "pcb.h"
 
 /**
  * @brief A queue of PCB's that are in the READY state to be scheduled to run.
  * It should be a priority queue such that the process with the highest priority can be selected next.
  */
-class ReadyQueue {
+class ReadyQueue
+{
 private:
-    // TODO: add your private member variables here
-    int q_size; //size of the queue
-    PCB *rdy_queue[50]; //pointer
+    int arr_size;
+    int capacity;
+    PCB *arr;
     // choose a data structure for the ReadyQueue. No STL class is allowed.
 
 public:
@@ -35,36 +34,63 @@ public:
      */
     ~ReadyQueue() {}
 
-	// You may add additional member functions, but don't change the definitions of the following four member functions.
+    // You may add additional member functions, but don't change the definitions of the following four member functions.
 
     /**
      * @brief Add a PCB representing a process into the ready queue.
      *
      * @param pcbPtr: the pointer to the PCB to be added
      */
-	void addPCB(PCB* pcbPtr);
+    void addPCB(PCB *pcbPtr);
 
     /**
      * @brief Remove and return the PCB with the highest priority from the queue
      *
      * @return PCB*: the pointer to the PCB with the highest priority
      */
-	PCB* removePCB();
+    PCB *removePCB();
 
     /**
      * @brief Returns the number of elements in the queue.
      *
      * @return int: the number of PCBs in the queue
      */
-	int size();
+    int size();
 
-     /**
-      * @brief Display the PCBs in the queue.
-      */
-	void displayAll();
-
-    void max_heapify(int size; int index);
-
-    void swap(int p1, int p2);
-
+    /**
+     * @brief Display the PCBs in the queue.
+     */
+    void displayAll();
+    /**
+     * @brief support queue
+     */
+    void siftDown(int i);
+    /**
+     * @brief support queue
+     */
+    void siftUp(int i);
+    /**
+     * @brief support queue
+     */
+    PCB getMax();
+    /**
+     * @brief support queue
+     */
+    bool isLeaf(int i);
+    /**
+     * @brief support queue
+     */
+    int right(int i);
+    /**
+     * @brief support queue
+     */
+    int left(int i);
+    /**
+     * @brief support queue
+     */
+    int parent(int i);
+    /**
+     * @brief support queue
+     */
+    void swap(PCB arr[], int q, int i);
 };

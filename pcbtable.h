@@ -5,8 +5,6 @@
  * @brief This is the header file for the PCBTable class, an array(list) of all PCB elements in the system..
  * @version 0.1
  */
-//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
-// Remember to add sufficient and clear comments to your code
 #pragma once
 
 #include "pcb.h"
@@ -18,7 +16,6 @@
  */
 class PCBTable {
 private:
-    // TODO: add your private member variables here
     // choose a data structure for the PCBTable. You can use an array of PCB pointers, e.g. vector<PCB *>. 
     int id;
     int priority;
@@ -71,7 +68,7 @@ public:
      * @param idx The index of the new PCB in the PCBTable
      */
     void addNewPCB(unsigned int pid, unsigned int priority, unsigned int idx) {
-        std::cout << "addNewPCB = " << pid << priority << idx << std::endl;
+        //std::cout << "addNewPCB = " << pid << priority << idx << std::endl;
         PCB *pcb = new PCB(pid, priority);
         addPCB(pcb, idx);
     }

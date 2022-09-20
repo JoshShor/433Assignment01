@@ -1,7 +1,7 @@
 
 /**
  * Assignment 1: priority queue of processes
- * @file pcbtable.h
+ * @file pcbtable.cpp
  * @author Tam Nguyen, Josh Shor
  * @brief This is the implementation file for the PCBTable class.
  * //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
@@ -20,6 +20,7 @@ using namespace std;
  */
 PCBTable::PCBTable(int size) {
     //id = pid;
+
     priority = priority;
     state = state;
     pcb_table_elem = vector<PCB*>(size);
@@ -37,7 +38,6 @@ PCBTable::~PCBTable() {
 
 /**
  * @brief Get the PCB at index "idx" of the PCBTable.
- *
  * @param idx: the index of the PCB to get
  * @return PCB*: pointer to the PCB at index "idx"
  */
@@ -52,13 +52,11 @@ PCB* PCBTable::getPCB(unsigned int idx) {
  */
 void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
 
-    std::cout << "addPCB = " << idx << std::endl;
-    std::cout << "addPCB = " << pcb << std::endl;
+    //std::cout << "addPCB = " << idx << std::endl;
+    //std::cout << "addPCB = " << pcb << std::endl;
     //this is giving a segmentation fault error?
     auto it = pcb_table_elem.begin() + idx;
-
-    pcb_table_elem.insert(it, pcb);
-    
-    std::cout << "addPCB complete"<<  std::endl;
+    pcb_table_elem.insert(it, pcb);  
+    //std::cout << "addPCB complete"<<  std::endl;
   
 }
