@@ -103,13 +103,14 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
  */
 PCB* ReadyQueue::removePCB() {
     // When removing a PCB from the queue, you must change its state to RUNNING.
+      PCB res;
       if(arr_size >= 0) {
             if(arr_size == 1) {
-                 PCB res = arr[--arr_size];
+                res = arr[--arr_size];
                  res.setState(ProcState::RUNNING);
                 return &res;
             }
-            PCB res = arr[0];
+            res = arr[0];
             arr[0] = arr[--arr_size];
             siftDown(0);
             res.setState(ProcState::RUNNING);   
