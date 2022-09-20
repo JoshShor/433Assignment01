@@ -71,7 +71,7 @@ public:
      * @param idx The index of the new PCB in the PCBTable
      */
     void addNewPCB(unsigned int pid, unsigned int priority, unsigned int idx) {
-        std::cout << "addNewPCB = " << pid << priority << idx << std::endl;
+        //std::cout << "addNewPCB = " << pid << priority << idx << std::endl;
         PCB *pcb = new PCB(pid, priority);
         addPCB(pcb, idx);
     }
