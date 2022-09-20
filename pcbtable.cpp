@@ -52,13 +52,13 @@ PCB* PCBTable::getPCB(unsigned int idx) {
  */
 void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
 
-    std::cout << "addPCB = " << idx << std::endl;
-    std::cout << "addPCB = " << pcb << std::endl;
+    //std::cout << "addPCB = " << idx << std::endl;
+    //std::cout << "addPCB = " << pcb << std::endl;
     //this is giving a segmentation fault error?
     auto it = pcb_table_elem.begin() + idx;
 
     pcb_table_elem.insert(it, pcb);
     
-    std::cout << "addPCB complete"<<  std::endl;
+    //std::cout << "addPCB complete"<<  std::endl;
   
 }
