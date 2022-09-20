@@ -1,61 +1,64 @@
-#include <iostream>
-#include "readyqueue.h"
 
+/**
+ * Assignment 1: priority queue of processes
+ * @file pcbtable.h
+ * @author Tam Nguyen, Josh Shor
+ * @brief This is the implementation file for the PCBTable class.
+ * //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
+ * // Remember to add sufficient comments to your code
+ */
+#include<iostream>
+#include "pcbtable.h"
+#include <vector>
 using namespace std;
 
-//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
-// Remember to add sufficient comments to your code
-
 
 /**
- * @brief Constructor for the ReadyQueue class.
- */
- ReadyQueue::ReadyQueue()  {
-   // size = 0;
-     //TODO: add your code here
-
- }
-//Created max heap
-void ReadyQueue::max_heapify(int arrySize, int indx){
-    int largest = indx;
-    int left = 2 * indx + 1;
-    int right = 2 * indx + 2;
-}
-
-/**
- * @brief Add a PCB representing a process into the ready queue.
+ * @brief Construct a new PCBTable object of the given size (number of PCBs)
  *
- * @param pcbPtr: the pointer to the PCB to be added
+ * @param size: the capacity of the PCBTable
  */
-void ReadyQueue::addPCB(PCB *pcbPtr) {
-    //TODO: add your code here
-    // When adding a PCB to the queue, you must change its state to READY.
+PCBTable::PCBTable(int size) {
+    //id = pid;
+    priority = priority;
+    state = state;
+    pcb_table_elem = vector<PCB*>(size);
+    std::cout << "initiatize vector with size ="<< pcb_table_elem.size() << std::endl;
+   
 }
 
 /**
- * @brief Remove and return the PCB with the highest priority from the queue
+ * @brief Destroy the PCBTable object. Make sure to delete all the PCBs in the table.
  *
- * @return PCB*: the pointer to the PCB with the highest priority
  */
-PCB* ReadyQueue::removePCB() {
-    //TODO: add your code here
-    // When removing a PCB from the queue, you must change its state to RUNNING.
-    // We need use the extact max function here
+PCBTable::~PCBTable() {
+     //delete pcb_table_elem;
 }
 
 /**
- * @brief Returns the number of elements in the queue.
+ * @brief Get the PCB at index "idx" of the PCBTable.
  *
- * @return int: the number of PCBs in the queue
+ * @param idx: the index of the PCB to get
+ * @return PCB*: pointer to the PCB at index "idx"
  */
-int ReadyQueue::size() {
-    //TODO: add your code here
-   // return size;
+PCB* PCBTable::getPCB(unsigned int idx) {
+      return  pcb_table_elem.at(idx);
 }
 
 /**
- * @brief Display the PCBs in the queue.
+ * @brief Add a PCB to the PCBTable.
+ *
+ * @param pcb: the PCB to add
  */
-void ReadyQueue::displayAll() {
-    //TODO: add your code here
+void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
+
+    std::cout << "addPCB = " << idx << std::endl;
+    std::cout << "addPCB = " << pcb << std::endl;
+    //this is giving a segmentation fault error?
+    auto it = pcb_table_elem.begin() + idx;
+
+    pcb_table_elem.insert(it, pcb);
+    
+    std::cout << "addPCB complete"<<  std::endl;
+  
 }
