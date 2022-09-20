@@ -1,59 +1,61 @@
-/**
- * Assignment 1: priority queue of processes
- * @file pcbtable.h
- * @author Joshua Shor, Tam Nguyen
- * @brief This is the implementation file for the PCBTable class.
- * //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
- * // Remember to add sufficient comments to your code
- */
-#include<iostream>
-#include "pcbtable.h"
-#include <vector>
+#include <iostream>
+#include "readyqueue.h"
+
 using namespace std;
 
+//You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
+// Remember to add sufficient comments to your code
+
 
 /**
- * @brief Construct a new PCBTable object of the given size (number of PCBs)
- *
- * @param size: the capacity of the PCBTable
+ * @brief Constructor for the ReadyQueue class.
  */
-PCBTable::PCBTable(int size) {
-    //id = pid;
-    priority = priority;
-    state = state;
-    vector<PCB> pcb_table_elem(size);
-    std::cout << "initiatize vector with size ="<< pcb_table_elem.size() << std::endl;
-   
+ ReadyQueue::ReadyQueue()  {
+   // size = 0;
+     //TODO: add your code here
+
+ }
+//Created max heap
+void ReadyQueue::max_heapify(int arrySize, int indx){
+    int largest = indx;
+    int left = 2 * indx + 1;
+    int right = 2 * indx + 2;
 }
 
 /**
- * @brief Destroy the PCBTable object. Make sure to delete all the PCBs in the table.
+ * @brief Add a PCB representing a process into the ready queue.
  *
+ * @param pcbPtr: the pointer to the PCB to be added
  */
-PCBTable::~PCBTable() {
-     //delete pcb_table_elem;
+void ReadyQueue::addPCB(PCB *pcbPtr) {
+    //TODO: add your code here
+    // When adding a PCB to the queue, you must change its state to READY.
 }
 
 /**
- * @brief Get the PCB at index "idx" of the PCBTable.
+ * @brief Remove and return the PCB with the highest priority from the queue
  *
- * @param idx: the index of the PCB to get
- * @return PCB*: pointer to the PCB at index "idx"
+ * @return PCB*: the pointer to the PCB with the highest priority
  */
-PCB* PCBTable::getPCB(unsigned int idx) {
-      return  &pcb_table_elem.at(idx);
+PCB* ReadyQueue::removePCB() {
+    //TODO: add your code here
+    // When removing a PCB from the queue, you must change its state to RUNNING.
+    // We need use the extact max function here
 }
 
 /**
- * @brief Add a PCB to the PCBTable.
+ * @brief Returns the number of elements in the queue.
  *
- * @param pcb: the PCB to add
+ * @return int: the number of PCBs in the queue
  */
-void PCBTable::addPCB(PCB *pcb, unsigned int idx) {
+int ReadyQueue::size() {
+    //TODO: add your code here
+   // return size;
+}
 
-    std::cout << "addPCB = " << idx << std::endl;
-    std::cout << "addPCB = " << pcb << std::endl;
-    pcb_table_elem.insert(pcb_table_elem.begin() + idx, *pcb);
-    std::cout << "addPCB complete"<<  std::endl;
-  
+/**
+ * @brief Display the PCBs in the queue.
+ */
+void ReadyQueue::displayAll() {
+    //TODO: add your code here
 }
