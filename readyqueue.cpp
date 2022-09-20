@@ -86,16 +86,14 @@ void  ReadyQueue::siftDown(int i)
  * @param pcbPtr: the pointer to the PCB to be added
  */
 void ReadyQueue::addPCB(PCB *pcbPtr) {
-    //TODO: add your code here
-      if(arr_size >= capacity){
-    //             throw Overflow();
-      }
+      pcbPtr->setState(ProcState::READY);
 
+      if(arr_size <= capacity){
              int i = arr_size;
              arr[i] = *pcbPtr;
              siftUp(i);
              arr_size++;
-    // When adding a PCB to the queue, you must change its state to READY.
+      }
 }
 
 /**
@@ -104,17 +102,17 @@ void ReadyQueue::addPCB(PCB *pcbPtr) {
  * @return PCB*: the pointer to the PCB with the highest priority
  */
 PCB* ReadyQueue::removePCB() {
-    //TODO: add your code here
     // When removing a PCB from the queue, you must change its state to RUNNING.
       if(arr_size >= 0) {
             if(arr_size == 1) {
                  PCB res = arr[--arr_size];
+                 res.setState(ProcState::RUNNING);
                 return &res;
             }
             PCB res = arr[0];
             arr[0] = arr[--arr_size];
             siftDown(0);
-
+            res.setState(ProcState::RUNNING);   
             return &res;
     }
 }
@@ -132,10 +130,9 @@ int ReadyQueue::size() {
  * @brief Display the PCBs in the queue.
  */
 void ReadyQueue::displayAll() {
+    std::cout <<  "Display Processes in ReadyQueue:"<< std::endl;
     for(int i = 0; i < arr_size; i++){
-         int tmpId = arr[i].id;
-         int tmpPriority = arr[i].priority;
-        std::cout << "id =" << tmpId << " priority =" << tmpPriority << std::endl;
+        arr[i].display();
           
     }
 }
